@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Quizzes from '../Quiz/quiz-index'
 import Quiz from '../Quiz/quiz-show'
 import QuizCreate from '../Quiz/quiz-create'
+import QuestionCreate from '../Quiz/Question/question-create'
 
 class App extends Component {
   constructor () {
@@ -60,6 +61,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
           <AuthenticatedRoute user={user} path='/quizzes/:id' component={Quiz} />
           <AuthenticatedRoute user={user} path='/quiz-create' component={QuizCreate} />
+          <AuthenticatedRoute user={user} path='/question-create' component={QuestionCreate} />
         </main>
       </Fragment>
     )

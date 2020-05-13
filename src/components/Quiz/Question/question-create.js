@@ -2,16 +2,20 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-import apiUrl from '../../apiConfig'
-import QuizForm from '../shared/QuizForm'
+import apiUrl from '../../../apiConfig'
+import QuestionForm from '../../shared/QuestionForm'
 
-const QuizCreate = () => {
-  const [ quiz, setQuiz ] = useState({
-    name: '',
-    description: ''
+const QuestionCreate = () => {
+  const [ question, setQuestion ] = useState({
+    question: '',
+    answer1: '',
+    answer2: '',
+    answer3: '',
+    answer4: '',
+    answerkey: ''
   })
 
-  const [ createdQuizId, setCreatedQuizId ] = useState(null)
+  const [ createdQuestionId, setCreatedQuestionId ] = useState(null)
 
   const handleChange = event => {
     event.persist()
@@ -19,30 +23,30 @@ const QuizCreate = () => {
     console.log('event.target.name', event.target.name)
     // const updatedField = { [event.target.name]: event.target.value }
     // const editedMovie = Object.assign(movie, updatedField)
-    setQuiz(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
+    setQuestion(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
     event.preventDefault()
 
     axios({
-      url: `${apiUrl}/quizzes`,
+      url: `${apiUrl}/questions`,
       method: 'POST',
-      data: { quiz }
+      data: { question }
     })
-      .then(res => setCreatedQuizId(res.data.quiz.id))
+      .then(res => setCreatedQuestionId(res.data.question.id))
       .catch(console.error)
   }
 
-  if (createdQuizId) {
+  if (createdQuestionId) {
     // this will redirect to create question
-    return <Redirect to={`/questions/${createdQuizId}`} />
+    return <Redirect to={`/questions/${createdQuestionId}`} />
   }
 
   return (
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
-      <QuizForm
-        quiz={quiz}
+      <QuestionForm
+        question={question}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         cancelPath='/'
@@ -51,4 +55,4 @@ const QuizCreate = () => {
   )
 }
 
-export default QuizCreate
+export default QuestionCreate
