@@ -7,8 +7,8 @@ import QuizForm from '../shared/QuizForm'
 
 const QuizCreate = (props, match, location, cancelPath) => {
   const [ quiz, setQuiz ] = useState({
-    name: '',
-    description: '',
+    name: props.quiz.name,
+    description: props.quiz.description,
     user_id: props.user.id
   })
 

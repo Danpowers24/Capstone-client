@@ -44,7 +44,7 @@ const Quiz = (props) => {
       <p>Description: {quiz.description}</p>
       <button onClick={destroy}>Delete This Quiz</button>
       <Link to={`/quizzes/${props.match.params.id}/edit`}>
-        <button>Edit</button>
+        <button>Edit Quiz</button>
       </Link>
       <Link to="/quiz-index">Back to all quizzes</Link>
     </div>

@@ -12,6 +12,7 @@ import Quizzes from '../Quiz/quiz-index'
 import Quiz from '../Quiz/quiz-show'
 import QuizCreate from '../Quiz/quiz-create'
 import QuestionCreate from '../Quiz/Question/question-create'
+import QuizUpdate from '../Quiz/quiz-update'
 
 class App extends Component {
   constructor () {
@@ -49,7 +50,7 @@ class App extends Component {
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <Route path='/sign-in' render={() => (
+          <Route path='/sign-in' user={user} render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
@@ -60,8 +61,15 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
           <AuthenticatedRoute user={user} path='/quizzes/:id' component={Quiz} />
-          <AuthenticatedRoute user={user} path='/quiz-create' component={QuizCreate} />
-          <AuthenticatedRoute user={user} path='/question-create' component={QuestionCreate} />
+          <AuthenticatedRoute user={user} exact path='/quiz-create' render={() => (
+            <QuizCreate user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/question-create' render={() => (
+            <QuestionCreate user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/quiz-update' render={() => (
+            <QuizUpdate user={user} />
+          )} />
         </main>
       </Fragment>
     )

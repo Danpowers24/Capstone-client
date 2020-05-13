@@ -5,14 +5,16 @@ import axios from 'axios'
 import apiUrl from '../../../apiConfig'
 import QuestionForm from '../../shared/QuestionForm'
 
-const QuestionCreate = () => {
+const QuestionCreate = (props, match, location, cancelPath) => {
   const [ question, setQuestion ] = useState({
     question: '',
     answer1: '',
     answer2: '',
     answer3: '',
     answer4: '',
-    answerkey: ''
+    answerkey: '',
+    user_id: props.user.id,
+    quiz_id: props.quiz.id
   })
 
   const [ createdQuestionId, setCreatedQuestionId ] = useState(null)
