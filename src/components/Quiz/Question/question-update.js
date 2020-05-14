@@ -24,20 +24,23 @@ const QuestionUpdate = (props, match, location, cancelPath) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(props)
+    // console.log(props)
     console.log('quizid (for some reason) is: ', quizId)
+    console.log('questionId is: ', questionId)
     axios({
-      url: `${apiUrl}/questions/${quizId}`,
+      url: `${apiUrl}/questions/${questionId}`,
       method: 'PATCH',
       data: { question }
     })
-      .then(res => setCreatedQuestionId(res.data.quiz.id))
+      .then(res => setCreatedQuestionId('something'))
       .catch(console.error)
   }
+  // I took this out of setCreatedQuestionId() in the above .then
+  // res.data.quiz.id
 
   if (createdQuestionId) {
-    // this will redirect to create question
-    return <Redirect to={`/questions/${question.id}`} />
+    // this should redirect back to the question view, if not... something that makes sense
+    return <Redirect to={`/questions/${questionId}`} />
   }
 
   return (
