@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { quizid } from '../quiz-show'
+import { quizId } from '../quiz-show'
 
 import apiUrl from '../../../apiConfig'
 // import Layout from '../shared/Layout'
@@ -20,7 +20,7 @@ const QuestionIndex = (props, quiz) => {
   }, [])
 
   console.log('in question-index, props are', props)
-  console.log('in question-index, quizid is', quizid)
+  console.log('in question-index, quizid is', quizId)
 
   // if quiz.id (from quiz.show) === props.match.params.id (in this file),
   // then list out the question.question
@@ -28,10 +28,10 @@ const QuestionIndex = (props, quiz) => {
   let questionsJsx = ''
 
   questionsJsx = questions.map(question => {
-    console.log('in the for loop, quizid is ', quizid)
-    console.log('in the for loop, question is ', question)
+    // console.log('in the for loop, quizid is ', quizid)
+    // console.log('in the for loop, question is ', question)
     // let counter = 0
-    if (quizid === question.quiz.id) {
+    if (quizId === question.quiz.id) {
       return <li key={question.id}>
         <Link to={`/questions/${question.id}`}>{question.question}</Link>
       </li>

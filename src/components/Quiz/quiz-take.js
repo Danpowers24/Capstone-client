@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { questionObj } from './Question/question-index'
-import { quizid } from './quiz-show'
+import { quizId } from './quiz-show'
 
 const QuizTake = (props) => {
   console.log('props are', props)
@@ -40,7 +40,7 @@ const QuizTake = (props) => {
 
   // Filter through all questions on database and return an array containing
   // the questions that were created from (are owned by) the quiz being currently viewed
-  const questionsCreatedByThisQuiz = questions.filter(question => question.quiz.id === quizid)
+  const questionsCreatedByThisQuiz = questions.filter(question => question.quiz.id === quizId)
   console.log('questionsCreatedByThisQuiz is', questionsCreatedByThisQuiz)
 
   questionsCreatedByThisQuiz.forEach(question => {

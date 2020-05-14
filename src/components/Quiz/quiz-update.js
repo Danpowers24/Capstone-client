@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { quizid } from './quiz-show'
+import { quizId } from './quiz-show'
 
 import apiUrl from '../../apiConfig'
 import UpdateQuizForm from '../Forms/UpdateQuizForm'
@@ -24,9 +24,9 @@ const QuizUpdate = (props, match, location, cancelPath) => {
   const handleSubmit = event => {
     event.preventDefault()
     console.log(props)
-    console.log(quizid)
+    console.log(quizId)
     axios({
-      url: `${apiUrl}/quizzes/${quizid}`,
+      url: `${apiUrl}/quizzes/${quizId}`,
       method: 'PATCH',
       data: { quiz }
     })
@@ -36,7 +36,7 @@ const QuizUpdate = (props, match, location, cancelPath) => {
 
   if (createdQuizId) {
     // this will redirect to create question
-    return <Redirect to={`/quizzes/${quizid}`} />
+    return <Redirect to={`/quizzes/${quizId}`} />
   }
 
   return (
@@ -45,7 +45,7 @@ const QuizUpdate = (props, match, location, cancelPath) => {
         quiz={quiz}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath={`/quizzes/${quizid}`}
+        cancelPath={`/quizzes/${quizId}`}
       />
     </div>
   )

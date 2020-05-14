@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import apiUrl from '../../apiConfig'
 // import Layout from '../shared/Layout'
 
-let quizid = ''
+let quizId = ''
 
 const Quiz = (props) => {
   console.log('these are the props', props)
@@ -46,14 +46,14 @@ const Quiz = (props) => {
   //   } />
   // }
 
-  quizid = quiz.id
-  console.log('quizId is ', quizid)
+  quizId = quiz.id
+  console.log('quizId is ', quizId)
 
   return (
     <div>
       <h4>Quiz Name: {quiz.name}</h4>
       <p>Description: {quiz.description}</p>
-      <Link to={`/quiz-take/${props.match.params.id}`} props={props} quizid={quizid}>
+      <Link to={`/quiz-take/${props.match.params.id}`} props={props} quizid={quizId}>
         <Button className='btn-primary'>Take This Quiz</Button>
       </Link>
       <Button className='btn-danger' onClick={destroy}>Delete This Quiz</Button>
@@ -63,7 +63,7 @@ const Quiz = (props) => {
       <Link to={`/question-create/${props.match.params.id}`}>
         <button>Create Question</button>
       </Link>
-      <Link to={`/question-index/${props.match.params.id}`} quizid={quizid}>
+      <Link to={`/question-index/${props.match.params.id}`} quizid={quizId}>
         <button>See All Questions</button>
       </Link>
       <Link to="/quiz-index">Back to All quizzes</Link>
@@ -72,4 +72,4 @@ const Quiz = (props) => {
 }
 
 export default Quiz
-export { quizid }
+export { quizId }
