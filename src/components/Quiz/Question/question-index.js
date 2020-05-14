@@ -30,11 +30,17 @@ const QuestionIndex = (props, quiz) => {
   questionsJsx = questions.map(question => {
     console.log('in the for loop, quizid is ', quizid)
     console.log('in the for loop, question is ', question)
+    // let counter = 0
     if (quizid === question.quiz.id) {
       return <li key={question.id}>
         <Link to={`/questions/${question.id}`}>{question.question}</Link>
       </li>
     }
+    // else if (counter = 0) {
+    // return <p>No questions<p>
+    // }
+    // logic to display 'no questions' message if there are no questions
+    // I should make a counter, every time there is a match
     // else {
     //   return <Link to={`/questions/${question.id}`}>Oops, no questions</Link>
     // }

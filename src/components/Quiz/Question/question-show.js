@@ -36,7 +36,7 @@ const QuestionShow = (props) => {
 
   return (
     <div>
-      <h4>Quiz Name: {question.question}</h4>
+      <h4>Question: {question.question}</h4>
       <button onClick={destroy}>Delete This Question</button>
       <Link to={`/questions/${props.match.params.id}/edit`}>
         <button>Edit Question</button>

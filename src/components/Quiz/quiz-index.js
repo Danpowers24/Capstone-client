@@ -5,34 +5,30 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 // import Layout from '../shared/Layout'
 
-const Quizzes = () => {
+const Quizzes = (props) => {
   const [quizzes, setQuizzes] = useState([])
-
-  // constructor (props) {
-  //   super(props)
-  //
-  //   this.state = {
-  //     quizzes: []
-  //   }
-  // }
-
   useEffect(() => {
     axios(`${apiUrl}/quizzes`)
       .then(res => setQuizzes(res.data.quizzes))
       .catch(console.error)
   }, [])
 
-  // componentDidMount () {
-  //   axios(`${apiUrl}/quizzes`)
-  //     .then(res => this.setState({ movies: res.data.quizzes }))
-  //     .catch(console.error)
-  // }
+  // Define userId as the user who is currently signed in
+  const userId = props.user.id
 
-  const quizzesJsx = quizzes.map(quiz => (
-    <li key={quiz.id}>
-      <Link to={`/quizzes/${quiz.id}`}>{quiz.name}</Link>
-    </li>
-  ))
+  // Loop through each quiz object that comes back from the axios call
+  const quizzesJsx = quizzes.map(quiz => {
+    // Each quiz will have a user object with an id, indicating which user created the quiz
+    // Check if the user that is currently logged in is the same user that created the quiz
+    if (userId === quiz.user.id) {
+      // if it's a match, display the quiz name with a link to that quiz (quiz-show.js)
+      return (
+        <li key={quiz.id}>
+          <Link to={`/quizzes/${quiz.id}`}>{quiz.name}</Link>
+        </li>
+      )
+    }
+  })
 
   return (
     <div>

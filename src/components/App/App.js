@@ -17,6 +17,9 @@ import QuestionIndex from '../Quiz/Question/question-index'
 import QuestionShow from '../Quiz/Question/question-show'
 import QuizTake from '../Quiz/quiz-take'
 
+// old quiz-index route, testing to see if the new syntax works (able to pass down current user id)
+// <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
+
 class App extends Component {
   constructor () {
     super()
@@ -62,7 +65,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
+          <AuthenticatedRoute user={user} exact path='/quiz-index/' render={() => (
+            <Quizzes user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/quizzes/:id' component={Quiz} />
           <AuthenticatedRoute user={user} exact path='/quiz-create' render={({ match }) => (
             <QuizCreate user={user} match={match} />

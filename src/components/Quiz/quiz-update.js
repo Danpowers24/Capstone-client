@@ -36,7 +36,7 @@ const QuizUpdate = (props, match, location, cancelPath) => {
 
   if (createdQuizId) {
     // this will redirect to create question
-    return <Redirect to={'/question-create/'} />
+    return <Redirect to={`/quizzes/${quizid}`} />
   }
 
   return (

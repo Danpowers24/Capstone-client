@@ -43,7 +43,7 @@ const QuizCreate = (props, match, location, cancelPath) => {
         quiz={quiz}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath='/'
+        cancelPath='/quiz-index/'
       />
     </div>
   )
