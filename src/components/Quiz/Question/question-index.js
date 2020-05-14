@@ -6,17 +6,21 @@ import { quizid } from '../quiz-show'
 import apiUrl from '../../../apiConfig'
 // import Layout from '../shared/Layout'
 
+let questionObj = ''
+
 const QuestionIndex = (props, quiz) => {
   const [questions, setQuestions] = useState([])
 
-  console.log('in question-index, props are', props)
-  console.log('in question-index, quizid is', quizid)
+  questionObj = questions
 
   useEffect(() => {
     axios(`${apiUrl}/questions/`)
       .then(res => setQuestions(res.data.questions))
       .catch(console.error)
   }, [])
+
+  console.log('in question-index, props are', props)
+  console.log('in question-index, quizid is', quizid)
 
   // if quiz.id (from quiz.show) === props.match.params.id (in this file),
   // then list out the question.question
@@ -31,9 +35,12 @@ const QuestionIndex = (props, quiz) => {
         <Link to={`/questions/${question.id}`}>{question.question}</Link>
       </li>
     }
+    // else {
+    //   return <Link to={`/questions/${question.id}`}>Oops, no questions</Link>
+    // }
   }
   )
-
+  console.log('in question-index, questions is', questions)
   return (
     <div>
       <h4>Questions</h4>
@@ -45,3 +52,4 @@ const QuestionIndex = (props, quiz) => {
 }
 
 export default QuestionIndex
+export { questionObj }

@@ -15,6 +15,7 @@ import QuestionCreate from '../Quiz/Question/question-create'
 import QuizUpdate from '../Quiz/quiz-update'
 import QuestionIndex from '../Quiz/Question/question-index'
 import QuestionShow from '../Quiz/Question/question-show'
+import QuizTake from '../Quiz/quiz-take'
 
 class App extends Component {
   constructor () {
@@ -77,6 +78,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/questions/:id' render={({ match }) => (
             <QuestionShow user={user} match={match} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/quiz-take/:id' render={({ match, props }) => (
+            <QuizTake user={user} match={match} props={props} quizId={match.params.id}/>
           )} />
         </main>
       </Fragment>

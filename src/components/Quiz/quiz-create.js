@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-import QuizForm from '../shared/QuizForm'
+import QuizForm from '../Forms/QuizForm'
 
 const QuizCreate = (props, match, location, cancelPath) => {
   const [ quiz, setQuiz ] = useState({

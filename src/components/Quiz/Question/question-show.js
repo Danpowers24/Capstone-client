@@ -31,9 +31,7 @@ const QuestionShow = (props) => {
   }
 
   if (deleted) {
-    return <Redirect to={
-      { pathname: '/', state: { msg: 'Quiz successfully deleted!' } }
-    } />
+    return <Redirect to={`/questions/${props.match.params.id}`}/>
   }
 
   return (

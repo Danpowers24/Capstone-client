@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../../apiConfig'
-import QuestionForm from '../../shared/QuestionForm'
+import QuestionForm from '../../Forms/QuestionForm'
 
 const QuestionCreate = (props, match, location, cancelPath) => {
   console.log('in questions-create, props are', props)

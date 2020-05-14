@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-import UpdateQuizForm from '../shared/UpdateQuizForm'
+import UpdateQuizForm from '../Forms/UpdateQuizForm'
 
 const QuizUpdate = (props, match, location, cancelPath) => {
   console.log('in quiz-update, props are ', props)
