@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { quizid } from './quiz-show'
 
 import apiUrl from '../../apiConfig'
 import UpdateQuizForm from '../Forms/UpdateQuizForm'
 
 const QuizUpdate = (props, match, location, cancelPath) => {
-  console.log('in quiz-update, props are ', props)
+  // console.log('in quiz-update, props are ', props)
   const [ quiz, setQuiz ] = useState({
     name: '',
     description: '',
@@ -17,19 +18,15 @@ const QuizUpdate = (props, match, location, cancelPath) => {
 
   const handleChange = event => {
     event.persist()
-    console.log('event.target.value', event.target.value)
-    console.log('event.target.name', event.target.name)
-    // const updatedField = { [event.target.name]: event.target.value }
-    // const editedMovie = Object.assign(movie, updatedField)
     setQuiz(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
     event.preventDefault()
     console.log(props)
-    console.log()
+    console.log(quizid)
     axios({
-      url: `${apiUrl}/quizzes/${props.match.params.id}`,
+      url: `${apiUrl}/quizzes/${quizid}`,
       method: 'PATCH',
       data: { quiz }
     })
@@ -48,7 +45,7 @@ const QuizUpdate = (props, match, location, cancelPath) => {
         quiz={quiz}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath='/'
+        cancelPath={`/quizzes/${quizid}`}
       />
     </div>
   )

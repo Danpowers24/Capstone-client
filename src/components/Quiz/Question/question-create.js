@@ -5,7 +5,7 @@ import apiUrl from '../../../apiConfig'
 import QuestionForm from '../../Forms/QuestionForm'
 
 const QuestionCreate = (props, match, location, cancelPath) => {
-  console.log('in questions-create, props are', props)
+  // console.log('in questions-create, props are', props)
   const [ question, setQuestion ] = useState({
     question: '',
     answer1: '',

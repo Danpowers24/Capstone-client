@@ -16,10 +16,6 @@ const QuizCreate = (props, match, location, cancelPath) => {
 
   const handleChange = event => {
     event.persist()
-    console.log('event.target.value', event.target.value)
-    console.log('event.target.name', event.target.name)
-    // const updatedField = { [event.target.name]: event.target.value }
-    // const editedMovie = Object.assign(movie, updatedField)
     setQuiz(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
   }
 

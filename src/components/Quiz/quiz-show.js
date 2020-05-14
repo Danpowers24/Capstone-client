@@ -35,10 +35,16 @@ const Quiz = (props) => {
   }
 
   if (deleted) {
-    return <Redirect to={
-      { pathname: '/', state: { msg: 'Quiz successfully deleted!' } }
-    } />
+    return <Redirect to='/quiz-index/' />
   }
+
+  // this is the syntax for including a message to the user
+  // I don't know how to implement both correctly yet
+  // if (deleted) {
+  //   return <Redirect to={
+  //     { exactpathname: '/quiz-index/', state: { msg: 'Quiz successfully deleted!' } }
+  //   } />
+  // }
 
   quizid = quiz.id
   console.log('quizId is ', quizid)
