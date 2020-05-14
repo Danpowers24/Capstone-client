@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
 import apiUrl from '../../../apiConfig'
 import QuestionForm from '../../shared/QuestionForm'
 
 const QuestionCreate = (props, match, location, cancelPath) => {
+  console.log('in questions-create, props are', props)
   const [ question, setQuestion ] = useState({
     question: '',
     answer1: '',
@@ -14,23 +14,20 @@ const QuestionCreate = (props, match, location, cancelPath) => {
     answer4: '',
     answerkey: '',
     user_id: props.user.id,
-    quiz_id: props.quiz.id
+    quiz_id: props.quizId
   })
 
   const [ createdQuestionId, setCreatedQuestionId ] = useState(null)
 
   const handleChange = event => {
     event.persist()
-    console.log('event.target.value', event.target.value)
-    console.log('event.target.name', event.target.name)
-    // const updatedField = { [event.target.name]: event.target.value }
-    // const editedMovie = Object.assign(movie, updatedField)
     setQuestion(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
     event.preventDefault()
-
+    console.log('handleSubmit called in questions-create')
+    console.log('props: ', props)
     axios({
       url: `${apiUrl}/questions`,
       method: 'POST',
@@ -51,7 +48,7 @@ const QuestionCreate = (props, match, location, cancelPath) => {
         question={question}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath='/'
+        cancelPath={`/quizzes/${props.quizId}`}
       />
     </div>
   )

@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import messages from '../AutoDismissAlert/messages'
+import messages from '../../AutoDismissAlert/messages'
+import apiUrl from '../../../apiConfig'
 
-import apiUrl from '../../apiConfig'
-// import Layout from '../shared/Layout'
+const QuestionShow = (props) => {
+  console.log('in question-show, props:', props)
 
-let quizid = ''
-
-const Quiz = (props) => {
-  console.log('these are the props', props)
-  const [ quiz, setQuiz ] = useState(null)
+  const [ question, setQuestion ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/quizzes/${props.match.params.id}`)
-      .then(res => setQuiz(res.data.quiz))
+    axios(`${apiUrl}/questions/${props.match.params.id}`)
+      .then(res => setQuestion(res.data.question))
       .catch(console.error)
   }, [])
 
   const destroy = () => {
     axios({
-      url: `${apiUrl}/quizzes/${props.match.params.id}`,
+      url: `${apiUrl}/questions/${props.match.params.id}`,
       method: 'DELETE'
     })
       .then(() => console.log('messages is: ', messages))
@@ -29,7 +26,7 @@ const Quiz = (props) => {
       .catch(console.error)
   }
 
-  if (!quiz) {
+  if (!question) {
     return <p>Loading...</p>
   }
 
@@ -39,21 +36,17 @@ const Quiz = (props) => {
     } />
   }
 
-  quizid = quiz.id
-  console.log('quizId is ', quizid)
-
   return (
     <div>
-      <h4>Quiz Name: {quiz.name}</h4>
-      <p>Description: {quiz.description}</p>
-      <button onClick={destroy}>Delete This Quiz</button>
-      <Link to={`/quizzes/${props.match.params.id}/edit`}>
-        <button>Edit Quiz</button>
+      <h4>Quiz Name: {question.question}</h4>
+      <button onClick={destroy}>Delete This Question</button>
+      <Link to={`/questions/${props.match.params.id}/edit`}>
+        <button>Edit Question</button>
       </Link>
       <Link to={`/question-create/${props.match.params.id}`}>
         <button>Create Question</button>
       </Link>
-      <Link to={`/question-index/${props.match.params.id}`} quizid={quizid}>
+      <Link to={`/question-index/${props.match.params.id}`}>
         <button>See all Questions</button>
       </Link>
       <Link to="/quiz-index">Back to all quizzes</Link>
@@ -61,5 +54,4 @@ const Quiz = (props) => {
   )
 }
 
-export default Quiz
-export { quizid }
+export default QuestionShow

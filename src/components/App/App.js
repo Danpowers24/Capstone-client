@@ -13,6 +13,8 @@ import Quiz from '../Quiz/quiz-show'
 import QuizCreate from '../Quiz/quiz-create'
 import QuestionCreate from '../Quiz/Question/question-create'
 import QuizUpdate from '../Quiz/quiz-update'
+import QuestionIndex from '../Quiz/Question/question-index'
+import QuestionShow from '../Quiz/Question/question-show'
 
 class App extends Component {
   constructor () {
@@ -60,15 +62,21 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
-          <AuthenticatedRoute user={user} path='/quizzes/:id' component={Quiz} />
-          <AuthenticatedRoute user={user} exact path='/quiz-create' render={() => (
-            <QuizCreate user={user} />
+          <AuthenticatedRoute user={user} exact path='/quizzes/:id' component={Quiz} />
+          <AuthenticatedRoute user={user} exact path='/quiz-create' render={({ match }) => (
+            <QuizCreate user={user} match={match} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/question-create' render={() => (
-            <QuestionCreate user={user} />
+          <AuthenticatedRoute user={user} exact path='/question-create/:id' render={({ match, props }) => (
+            <QuestionCreate user={user} match={match} props={props} quizId={match.params.id}/>
           )} />
-          <AuthenticatedRoute user={user} exact path='/quiz-update' render={() => (
+          <AuthenticatedRoute user={user} exact path='/quizzes/:id/edit' render={() => (
             <QuizUpdate user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/question-index/:id' render={({ match }) => (
+            <QuestionIndex user={user} match={match} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/questions/:id' render={({ match }) => (
+            <QuestionShow user={user} match={match} />
           )} />
         </main>
       </Fragment>

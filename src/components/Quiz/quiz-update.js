@@ -3,12 +3,13 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-import QuizForm from '../shared/QuizForm'
+import UpdateQuizForm from '../shared/UpdateQuizForm'
 
-const QuizCreate = (props, match, location, cancelPath) => {
+const QuizUpdate = (props, match, location, cancelPath) => {
+  console.log('in quiz-update, props are ', props)
   const [ quiz, setQuiz ] = useState({
-    name: props.quiz.name,
-    description: props.quiz.description,
+    name: '',
+    description: '',
     user_id: props.user.id
   })
 
@@ -25,11 +26,11 @@ const QuizCreate = (props, match, location, cancelPath) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(quiz)
+    console.log(props)
     console.log()
     axios({
-      url: `${apiUrl}/quizzes`,
-      method: 'POST',
+      url: `${apiUrl}/quizzes/${props.match.params.id}`,
+      method: 'PATCH',
       data: { quiz }
     })
       .then(res => setCreatedQuizId(res.data.quiz.id))
@@ -43,7 +44,7 @@ const QuizCreate = (props, match, location, cancelPath) => {
 
   return (
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
-      <QuizForm
+      <UpdateQuizForm
         quiz={quiz}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
@@ -53,4 +54,4 @@ const QuizCreate = (props, match, location, cancelPath) => {
   )
 }
 
-export default QuizCreate
+export default QuizUpdate
