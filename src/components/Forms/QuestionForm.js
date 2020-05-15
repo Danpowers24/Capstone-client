@@ -58,6 +58,16 @@ const QuestionForm = ({ question, handleChange, handleSubmit, cancelPath }) => (
         onChange={handleChange}
       />
 
+      <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Label>Correct Answer</Form.Label>
+        <Form.Control as="select">
+          <option>answer1</option>
+          <option>answer2</option>
+          <option>answer3</option>
+          <option>answer4</option>
+        </Form.Control>
+      </Form.Group>
+
       <Button type="submit">Submit</Button>
       <Link to={cancelPath}>
         <Button>Cancel</Button>
