@@ -129,7 +129,7 @@ const QuizTake = (props) => {
         <label>
           <input
             type="radio"
-            name="answer4s"
+            name="answer4"
             value={questions.answer4}
             checked={false}
             className="form-check-input"
@@ -148,7 +148,7 @@ const QuizTake = (props) => {
             className="form-check-input"
             onChange={handleSubmit}
           />
-          {question.answer4}
+          Submit Answer
         </label>
       </div>
       <Button onSubmit={handleSubmit} className="btn btn-success mt-2" type="submit">

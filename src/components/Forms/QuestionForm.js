@@ -50,7 +50,7 @@ const QuestionForm = ({ question, handleChange, handleSubmit, cancelPath }) => (
         onChange={handleChange}
       />
 
-      <Form.Label>Possible Answers</Form.Label>
+      <Form.Label>Correct Answer</Form.Label>
       <Form.Control
         placeholder="Drop down... answer1/2/3/4"
         value={question.answerkey}

@@ -47,7 +47,7 @@ const QuestionShow = (props) => {
       <h5>Answer 2: {question.answer2}</h5>
       <h5>Answer 3: {question.answer3}</h5>
       <h5>Answer 4: {question.answer4}</h5>
-      <h5>Correct Answer: {question.answer1}</h5>
+      <h5>Correct Answer: {question.answerkey}</h5>
 
       <button onClick={destroy}>Delete This Question</button>
       <Link to={`/questions/${props.match.params.id}/edit`}>
