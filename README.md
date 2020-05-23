@@ -53,7 +53,7 @@ DELETE | /resources/:id
 ## Images
 
 #### App Screenshot:
-![screenshot](https://media.idownloadblog.com/wp-content/uploads/2017/07/Select-Instagram-story-to-save-to-iPhone.jpeg)
+![screenshot](https://i.imgur.com/SBqXUCt.png)
 
 ---
 
