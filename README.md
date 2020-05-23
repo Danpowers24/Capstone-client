@@ -20,12 +20,21 @@ Lorem ipsum dolor amet cloud bread letterpress squid actually, single-origin cof
 
 ### User Stories
 
-- As a user I want to sign in/up
-- As a user I want to Create a new < resource >
-- As a user I want to Read multiple < resources >
-- As a user I want to Read a single < resource >
-- As a user I want to Update a < resource > I own
-- As a user I want to Delete a < resource > I own
+- As an unauthenticated user, I want to be able to sign up.
+- As an unauthenticated user, I want to be able to sign in.
+- As an authenticated user, I want to change my password.
+- As an authenticated user, I want to log out.
+
+- As an authenticated user, I want to create a quiz.
+- As an authenticated user, I want to see my quizzes.
+- As an authenticated user, I want to edit my quizzes.
+- As an authenticated user, I want to delete one of my quizzes.
+
+- As an authenticated user, I want to create questions for one of my quizzes.
+- As an authenticated user, I want to see the questions of one of my quizzes.
+- As an authenticated user, I want to edit the questions of one of my quizzes.
+- As an authenticated user, I want to delete a question on one of my quizzes.
+
 
 ### Technologies Used
 
@@ -63,4 +72,4 @@ DELETE | /resources/:id
 ---
 
 #### ERD:
-![ERD](https://www.smartdraw.com/entity-relationship-diagram/img/cardinality.jpg?bn=1510011144)
+![ERD](https://i.imgur.com/uMAPdyN.png)
