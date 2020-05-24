@@ -44,16 +44,6 @@ Lorem ipsum dolor amet cloud bread letterpress squid actually, single-origin cof
 - React
 - Axios
 
-### Catalog of Routes
-
-Verb         |	URI Pattern
------------- | -------------
-GET | /resources
-GET | /resources/:id
-POST | /resources
-PATCH | /resources/:id
-DELETE | /resources/:id
-
 ### Unsolved Problems
 
 - The application currently does not allow the user to take a quiz. I would love to implement that functionality in the next version.
@@ -73,6 +63,3 @@ Quiz creation view
 ![wireframe](https://i.imgur.com/Os9ntYv.png)
 
 ---
-
-#### ERD:
-![ERD](https://i.imgur.com/uMAPdyN.png)
