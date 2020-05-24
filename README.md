@@ -66,8 +66,10 @@ DELETE | /resources/:id
 
 ---
 
-#### Wireframe:
-![wireframe](https://lucidchart.zendesk.com/hc/article_attachments/360001080866/Facebook_Wireframe_-_New_Page.png)
+#### Wireframes:
+![wireframe](https://i.imgur.com/nBLSJCD.png)
+![wireframe](https://i.imgur.com/37bLMwd.png)
+![wireframe](https://i.imgur.com/Os9ntYv.png)
 
 ---
 
