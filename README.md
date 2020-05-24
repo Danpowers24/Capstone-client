@@ -69,6 +69,7 @@ DELETE | /resources/:id
 #### Wireframes:
 ![wireframe](https://i.imgur.com/nBLSJCD.png)
 ![wireframe](https://i.imgur.com/37bLMwd.png)
+Quiz creation view
 ![wireframe](https://i.imgur.com/Os9ntYv.png)
 
 ---
