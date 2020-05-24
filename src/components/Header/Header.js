@@ -2,6 +2,14 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
+// I have removed this feature for resubmittal purposes
+// In future iterations, I will have some basic content for the home page
+// const alwaysOptions = (
+//   <Fragment>
+//     <Nav.Link to="/">Home</Nav.Link>
+//   </Fragment>
+// )
+
 const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#quiz-index">See All Quizzes</Nav.Link>
@@ -18,12 +26,7 @@ const unauthenticatedOptions = (
   </Fragment>
 )
 
-const alwaysOptions = (
-  <Fragment>
-    <Nav.Link to="/">Home</Nav.Link>
-  </Fragment>
-)
-
+// In future iterations, add alwaysOptions to rendered components list (between lines 38 and 39)
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
@@ -33,7 +36,6 @@ const Header = ({ user }) => (
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
         { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
-        { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>
     </Navbar.Collapse>
