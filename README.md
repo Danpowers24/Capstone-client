@@ -2,12 +2,6 @@
 
 At the base level, this application allows the user to create and take quizzes. This application was inspired by the need for a way for [PACTS](http://csph.brighamandwomens.org/cultural-dexterity-nih-r01-awarded/) researchers to test surgeons on whether or not they were retaining knowledge from the curriculum the researchers were developing.
 
-## Setup Steps
-
-1. [Fork and clone](https://git.generalassemb.ly/ga-wdi-boston/meta/wiki/ForkAndClone) this repository.
-1. Run `install command` to install all dependencies
-1. Use `start command` to spin up the server.
-
 ## Important Links
 
 - [Back-end Repo](https://github.com/Danpowers24/Capstone-api)
