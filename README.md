@@ -43,11 +43,12 @@ Lorem ipsum dolor amet cloud bread letterpress squid actually, single-origin cof
 - Javascript
 - React
 - Axios
+- cURL
 
 ### Unsolved Problems
 
 - The application currently does not allow the user to take a quiz. I would love to implement that functionality in the next version.
-- I would like to eventually allow administrators to create the quizzes and only let users take quizzes. t
+- I would like to eventually allow administrators to create the quizzes and only let users take quizzes.
 
 ## Images
 
