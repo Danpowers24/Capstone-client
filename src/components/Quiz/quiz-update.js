@@ -28,6 +28,9 @@ const QuizUpdate = (props, match, location, cancelPath) => {
     axios({
       url: `${apiUrl}/quizzes/${quizId}`,
       method: 'PATCH',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { quiz }
     })
       .then(res => setCreatedQuizId(res.data.quiz.id))

@@ -30,6 +30,9 @@ const QuestionUpdate = (props, match, location, cancelPath) => {
     axios({
       url: `${apiUrl}/questions/${questionId}`,
       method: 'PATCH',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { question }
     })
       .then(res => setCreatedQuestionId('something'))

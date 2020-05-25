@@ -20,6 +20,7 @@ import QuestionUpdate from '../Quiz/Question/question-update'
 
 // old quiz-index route, testing to see if the new syntax works (able to pass down current user id)
 // <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
+//           <AuthenticatedRoute user={user} exact path='/quizzes/:id' component={Quiz} />
 
 class App extends Component {
   constructor () {
@@ -69,7 +70,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/quiz-index/' render={() => (
             <Quizzes user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/quizzes/:id' component={Quiz} />
+          <AuthenticatedRoute user={user} exact path='/quizzes/:id' render={({ match }) => (
+            <Quiz match={match} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/quiz-create' render={({ match }) => (
             <QuizCreate user={user} match={match} />
           )} />

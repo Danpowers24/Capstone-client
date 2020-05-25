@@ -31,6 +31,9 @@ const QuestionCreate = (props, match, location, cancelPath) => {
     axios({
       url: `${apiUrl}/questions`,
       method: 'POST',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { question }
     })
       .then(res => setCreatedQuestionId(res.data.question.id))

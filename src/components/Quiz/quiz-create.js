@@ -5,7 +5,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import QuizForm from '../Forms/QuizForm'
 
-const QuizCreate = (props, match, location, cancelPath) => {
+const QuizCreate = (props, match, location, cancelPath, user) => {
   const [ quiz, setQuiz ] = useState({
     name: '',
     description: '',
@@ -19,13 +19,17 @@ const QuizCreate = (props, match, location, cancelPath) => {
     setQuiz(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event, user) => {
+    console.log(props)
     event.preventDefault()
     console.log(quiz)
     console.log()
     axios({
       url: `${apiUrl}/quizzes`,
       method: 'POST',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { quiz }
     })
       .then(res => setCreatedQuizId(res.data.quiz.id))

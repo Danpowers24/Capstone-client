@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import messages from '../../AutoDismissAlert/messages'
+import { quizId } from '../quiz-show'
+// import messages from '../../AutoDismissAlert/messages'
 import apiUrl from '../../../apiConfig'
 
 let questionId
 
 const QuestionShow = (props) => {
   console.log('in question-show, props:', props)
+  console.log('in question-show, quizid:', quizId)
 
   const [ question, setQuestion ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
@@ -15,7 +17,13 @@ const QuestionShow = (props) => {
   console.log('in question-show.js, question is: ', question)
 
   useEffect(() => {
-    axios(`${apiUrl}/questions/${props.match.params.id}`)
+    axios({
+      url: `${apiUrl}/questions/${props.match.params.id}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setQuestion(res.data.question))
       .catch(console.error)
   }, [])
@@ -23,9 +31,12 @@ const QuestionShow = (props) => {
   const destroy = () => {
     axios({
       url: `${apiUrl}/questions/${props.match.params.id}`,
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
-      .then(() => console.log('messages is: ', messages))
+      // .then(() => console.log('messages is: ', messages))
       .then(() => setDeleted(true))
       .catch(console.error)
   }
@@ -37,7 +48,7 @@ const QuestionShow = (props) => {
   }
 
   if (deleted) {
-    return <Redirect to={`/questions/${props.match.params.id}`}/>
+    return <Redirect to={`/quizzes/${quizId}`}/>
   }
 
   return (

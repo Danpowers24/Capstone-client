@@ -8,7 +8,13 @@ import apiUrl from '../../apiConfig'
 const Quizzes = (props) => {
   const [quizzes, setQuizzes] = useState([])
   useEffect(() => {
-    axios(`${apiUrl}/quizzes`)
+    axios({
+      url: apiUrl + '/quizzes',
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setQuizzes(res.data.quizzes))
       .catch(console.error)
   }, [])

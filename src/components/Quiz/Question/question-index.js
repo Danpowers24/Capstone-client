@@ -14,7 +14,13 @@ const QuestionIndex = (props, quiz) => {
   questionObj = questions
 
   useEffect(() => {
-    axios(`${apiUrl}/questions/`)
+    axios({
+      url: `${apiUrl}/questions/`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setQuestions(res.data.questions))
       .catch(console.error)
   }, [])

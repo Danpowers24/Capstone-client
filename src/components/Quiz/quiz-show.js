@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import messages from '../AutoDismissAlert/messages'
+// import messages from '../AutoDismissAlert/messages'
 import Button from 'react-bootstrap/Button'
 
 import apiUrl from '../../apiConfig'
@@ -15,7 +15,13 @@ const Quiz = (props) => {
   const [ deleted, setDeleted ] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/quizzes/${props.match.params.id}`)
+    axios({
+      url: apiUrl + '/quizzes/' + props.match.params.id,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setQuiz(res.data.quiz))
       .catch(console.error)
   }, [])
@@ -23,9 +29,12 @@ const Quiz = (props) => {
   const destroy = () => {
     axios({
       url: `${apiUrl}/quizzes/${props.match.params.id}`,
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
-      .then(() => console.log('messages is: ', messages))
+      // .then(() => console.log('messages is: ', messages))
       .then(() => setDeleted(true))
       .catch(console.error)
   }
