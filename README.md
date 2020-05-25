@@ -1,6 +1,6 @@
 # Application Title: A Description
 
-At the base level, this application allows the user to create and take quizzes. This application was inspired by the need for a way for [PACTS](http://csph.brighamandwomens.org/cultural-dexterity-nih-r01-awarded/) researchers to test surgeons on whether or not they were retaining knowledge from the curriculum the researchers were developing.
+This application allows a user to sign up and sign in. A user can create quizzes and questions for those quizzes. A user can CRUD on their quizzes and questions. This application was inspired by the need for a way for [PACTS](http://csph.brighamandwomens.org/cultural-dexterity-nih-r01-awarded/) researchers to test surgeons on whether or not they were retaining knowledge from the curriculum the researchers were developing.
 
 ## Important Links
 
@@ -16,7 +16,7 @@ I jumped into a Zoom room with some classmates and we went through the basic set
 
 When stuck on an issue, I like to collaborate with my classmates. I will either ask them for help, or I will take a break and help with their bug. I really benefit from taking a small break and coming back to a bug with a fresh set of eyes.
 
-During the home stretch I relied heavily on GA's issue queue, googling issues, and recalling the work I have done on past projects. Experience is a great teacher, whether it is my own or someone else's. 
+During the home stretch I relied heavily on GA's issue queue, googling issues, and recalling the work I have done on past projects. Experience is a great teacher, whether it is my own or someone else's.
 
 ### User Stories
 
