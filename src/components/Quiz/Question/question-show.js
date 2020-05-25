@@ -8,13 +8,13 @@ import apiUrl from '../../../apiConfig'
 let questionId
 
 const QuestionShow = (props) => {
-  console.log('in question-show, props:', props)
-  console.log('in question-show, quizid:', quizId)
+  // console.log('in question-show, props:', props)
+  // console.log('in question-show, quizid:', quizId)
 
   const [ question, setQuestion ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
 
-  console.log('in question-show.js, question is: ', question)
+  // console.log('in question-show.js, question is: ', question)
 
   useEffect(() => {
     axios({

@@ -20,10 +20,10 @@ const QuizCreate = (props, match, location, cancelPath, user) => {
   }
 
   const handleSubmit = (event, user) => {
-    console.log(props)
+    // console.log(props)
     event.preventDefault()
-    console.log(quiz)
-    console.log()
+    // console.log(quiz)
+    // console.log()
     axios({
       url: `${apiUrl}/quizzes`,
       method: 'POST',

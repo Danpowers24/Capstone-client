@@ -14,7 +14,7 @@ const QuizTake = (props) => {
   // tie selected queestion to this answer
   // not sure what to set initial state to
   const [ answer, setAnswer ] = useState([])
-  console.log('answer is', answer)
+  // console.log('answer is', answer)
   // console.log('in quiz-take.js, questions is ', questions)
   // console.log('in quiz-take.js, questionObj is ', questionObj)
 
@@ -25,7 +25,7 @@ const QuizTake = (props) => {
   }, [])
 
   const selectedAnswer = Object.keys(answer)[0]
-  console.log('selectedAnswer is: ', selectedAnswer)
+  // console.log('selectedAnswer is: ', selectedAnswer)
 
   // const [ questionAnswerId, setQuestionAnswerId ] = useState(null)
 

@@ -10,7 +10,7 @@ import apiUrl from '../../apiConfig'
 let quizId = ''
 
 const Quiz = (props) => {
-  console.log('these are the props', props)
+  // console.log('these are the props', props)
   const [ quiz, setQuiz ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
 
@@ -56,7 +56,7 @@ const Quiz = (props) => {
   // }
 
   quizId = quiz.id
-  console.log('quizId is ', quizId)
+  // console.log('quizId is ', quizId)
 
   return (
     <div>

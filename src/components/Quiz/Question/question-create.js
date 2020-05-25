@@ -26,8 +26,8 @@ const QuestionCreate = (props, match, location, cancelPath) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log('handleSubmit called in questions-create')
-    console.log('props: ', props)
+    // console.log('handleSubmit called in questions-create')
+    // console.log('props: ', props)
     axios({
       url: `${apiUrl}/questions`,
       method: 'POST',

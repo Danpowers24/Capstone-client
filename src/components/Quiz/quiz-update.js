@@ -23,8 +23,8 @@ const QuizUpdate = (props, match, location, cancelPath) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(props)
-    console.log(quizId)
+    // console.log(props)
+    // console.log(quizId)
     axios({
       url: `${apiUrl}/quizzes/${quizId}`,
       method: 'PATCH',

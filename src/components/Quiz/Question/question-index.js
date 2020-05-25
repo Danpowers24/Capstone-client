@@ -25,8 +25,8 @@ const QuestionIndex = (props, quiz) => {
       .catch(console.error)
   }, [])
 
-  console.log('in question-index, props are', props)
-  console.log('in question-index, quizid is', quizId)
+  // console.log('in question-index, props are', props)
+  // console.log('in question-index, quizid is', quizId)
 
   // if quiz.id (from quiz.show) === props.match.params.id (in this file),
   // then list out the question.question
@@ -55,7 +55,7 @@ const QuestionIndex = (props, quiz) => {
     // }
   }
   )
-  console.log('in question-index, questions is', questions)
+  // console.log('in question-index, questions is', questions)
   return (
     <div>
       <h4>Questions</h4>
