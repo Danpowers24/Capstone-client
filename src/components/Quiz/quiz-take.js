@@ -25,7 +25,7 @@ const QuizTake = (props) => {
   }, [])
 
   const selectedAnswer = Object.keys(answer)[0]
-  // console.log('selectedAnswer is: ', selectedAnswer)
+  console.log('selectedAnswer is: ', selectedAnswer)
 
   // const [ questionAnswerId, setQuestionAnswerId ] = useState(null)
 

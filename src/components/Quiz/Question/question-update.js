@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { quizId } from '../quiz-show'
+// import { quizId } from '../quiz-show'
 import { questionId } from './question-show'
 
 import apiUrl from '../../../apiConfig'
