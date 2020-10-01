@@ -9,14 +9,8 @@ import Button from 'react-bootstrap/Button'
 const QuizTake = (props) => {
   // console.log('props are', props)
   const [ questions, setQuestions ] = useState([])
-  // need new state variable
-  // call it answer
-  // tie selected queestion to this answer
-  // not sure what to set initial state to
+
   const [ answer, setAnswer ] = useState([])
-  // console.log('answer is', answer)
-  // console.log('in quiz-take.js, questions is ', questions)
-  // console.log('in quiz-take.js, questionObj is ', questionObj)
 
   useEffect(() => {
     axios(`${apiUrl}/questions/`)
@@ -25,11 +19,12 @@ const QuizTake = (props) => {
   }, [])
 
   const selectedAnswer = Object.keys(answer)[0]
-  // console.log('selectedAnswer is: ', selectedAnswer)
+  console.log('selectedAnswer is: ', selectedAnswer)
 
   // const [ questionAnswerId, setQuestionAnswerId ] = useState(null)
 
   const handleChange = event => {
+    // Here, I need to figure out how to make the radio button show as selected
     event.persist()
     // setting the state of answers state variable, not questions
     setAnswer(answer => ({ [event.target.name]: event.target.value }))
@@ -50,13 +45,20 @@ const QuizTake = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log('handlesubmit has been called, this is the event', event)
-    // console.log('answer is: ', answer)
+    // So I need to make a single button at the bottom of the page to loop through the questions
+    // if question.answer[i] === selected answer[i]
+      // start with a console log - answer[i] is correct!
+    // else if question.answer[i] === selected answer[i]
+      // clg - answer[i] is incorrect
+      
+      // render something showing correct answer or wrong answer
+
+
     // set the following to answer 1/2/3/4
       .then((selectedAnswer, questionsCreatedByThisQuiz) => {
-        const firstQuestionCreatedByThisQuiz = questionsCreatedByThisQuiz[0]
-        console.log('firstQuestionCreatedByThisQuiz.answerkey is ', firstQuestionCreatedByThisQuiz.answerkey)
-        if (selectedAnswer === firstQuestionCreatedByThisQuiz.answerkey) {
+        // const firstQuestionCreatedByThisQuiz = questionsCreatedByThisQuiz[0]
+        console.log('questionsCreatedByThisQuiz[0].answerkey is ', questionsCreatedByThisQuiz[0].answerkey)
+        if (selectedAnswer === questionsCreatedByThisQuiz[0].answerkey) {
           console.log('correct answer!')
         } else {
           console.log('some sort of match not found')
@@ -67,17 +69,11 @@ const QuizTake = (props) => {
       // run a check if correct answer function
   }
 
-  // console.log('handleSubmit is: ', handleSubmit)
-
   // Filter through all questions on database and return an array containing
   // the questions that were created from (are owned by) the quiz being currently viewed
   const questionsCreatedByThisQuiz = questions.filter(question => question.quiz.id === quizId)
 
   console.log('questionsCreatedByThisQuiz is', questionsCreatedByThisQuiz)
-
-  const firstQuestionCreatedByThisQuiz = questionsCreatedByThisQuiz[0]
-
-  console.log('firstQuestionCreatedByThisQuiz is: ', firstQuestionCreatedByThisQuiz)
 
   const styles = {
     display: 'block'
