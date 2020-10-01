@@ -26,6 +26,9 @@
       "off",
       "single"
     ],
+    "skipBlankLines": 0,
+    "no-trailing-spaces": 0,
+    "ignoreComments": 0,
     "indent": ["off", 2],
     "react/prop-types": [0]
   }

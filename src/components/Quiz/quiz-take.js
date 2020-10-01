@@ -119,6 +119,7 @@ const QuizTake = (props) => {
         {answersSubmitted ? <div>You got {answersSubmitted - 1} answers correct</div> : showTheseQuestions}
       </ul>
       {answersSubmitted ? '' : <Button onClick={handleSubmit} className="btn btn-success mt-2" type="submit">Submit Answers</Button>}
+      
     </div>
   )
 }
