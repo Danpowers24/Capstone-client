@@ -24,7 +24,7 @@ const QuestionUpdate = (props, match, location, cancelPath) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    // console.log(props)
+      // console.log(props)
     // console.log('quizid (for some reason) is: ', quizId)
     // console.log('questionId is: ', questionId)
     axios({

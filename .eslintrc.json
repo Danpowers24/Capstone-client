@@ -16,17 +16,17 @@
       "browser": true
   },
   "rules": {
-    "prefer-const": "error",
-    "no-var": "error",
+    "prefer-const": "off",
+    "no-var": "off",
     "semi": [
-      "error",
+      "off",
       "never"
     ],
     "quotes": [
-      "error",
+      "off",
       "single"
     ],
-    "indent": ["error", 2],
+    "indent": ["off", 2],
     "react/prop-types": [0]
   }
 }
