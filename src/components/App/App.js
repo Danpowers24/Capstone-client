@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
+import './App.scss'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -79,8 +80,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/question-create/:id' render={({ match, props }) => (
             <QuestionCreate user={user} match={match} props={props} quizId={match.params.id}/>
           )} />
-          <AuthenticatedRoute user={user} exact path='/quizzes/:id/edit' render={() => (
-            <QuizUpdate user={user} />
+          <AuthenticatedRoute user={user} exact path='/quizzes/:id/edit' render={({ match }) => (
+            <QuizUpdate user={user} match={match} quizId={match.params.id}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/question-index/:id' render={({ match }) => (
             <QuestionIndex user={user} match={match} />

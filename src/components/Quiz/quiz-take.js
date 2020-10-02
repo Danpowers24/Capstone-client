@@ -128,7 +128,7 @@ const QuizTake = (props) => {
           </Button>
         }
         {answersSubmitted 
-          ? <Link to={{pathname:`/quizzes/${quizId}`}}>Go Back</Link>
+          ? <Link to={{ pathname: `/quizzes/${quizId}` }}>Go Back</Link>
           : ''
         }
     </div>

@@ -29,7 +29,7 @@ const Quizzes = (props) => {
     if (userId === quiz.user.id) {
       // if it's a match, display the quiz name with a link to that quiz (quiz-show.js)
       return (
-        <li key={quiz.id}>
+        <li key={quiz.id} className='quiz-index-item'>
           <Link to={`/quizzes/${quiz.id}`}>{quiz.name}</Link>
         </li>
       )
@@ -37,9 +37,9 @@ const Quizzes = (props) => {
   })
 
   return (
-    <div>
+    <div className="quiz-index-container">
       <h4>Quizzes</h4>
-      <ul>
+      <ul className="quiz-index-list">
         {quizzesJsx}
       </ul>
     </div>

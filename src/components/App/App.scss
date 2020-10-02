@@ -1,0 +1,27 @@
+.quiz-index-container {
+    // background: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.quiz-index-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-index-item {
+    font-size: 20px;
+}
+
+.quiz-show-container {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    border: 5px black;
+}
+
+.quiz-show-buttons {
+    display: flex;
+    flex-direction: column;
+}
