@@ -53,6 +53,7 @@ const QuestionForm = ({ question, handleChange, handleSubmit, handleSelectAnswer
       <Form.Group controlId="exampleForm.ControlSelect1">
         <Form.Label>Correct Answer</Form.Label>
         <Form.Control onChange={handleSelectAnswerKey} as="select">
+          <option>No Correct Answer Selected</option>
           <option>answer1</option>
           <option>answer2</option>
           <option>answer3</option>

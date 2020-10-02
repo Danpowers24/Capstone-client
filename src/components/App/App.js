@@ -90,7 +90,7 @@ class App extends Component {
             <QuestionShow user={user} match={match} />
           )} />
           <AuthenticatedRoute user={user} exact path='/questions/:id/edit' render={({ match }) => (
-            <QuestionUpdate user={user} match={match} />
+            <QuestionUpdate user={user} match={match} questionId={match.params.id} />
           )} />
           <AuthenticatedRoute user={user} exact path='/quiz-take/:id' render={({ match, props }) => (
             <QuizTake user={user} match={match} props={props} quizId={match.params.id}/>

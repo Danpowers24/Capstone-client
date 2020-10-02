@@ -12,7 +12,7 @@ const QuestionCreate = (props, match, location, cancelPath) => {
     answer2: '',
     answer3: '',
     answer4: '',
-    answerkey: '',
+    answerkey: 'answer1',
     user_id: props.user.id,
     quiz_id: props.quizId
   })
