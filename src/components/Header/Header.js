@@ -28,7 +28,7 @@ const unauthenticatedOptions = (
 
 // In future iterations, add alwaysOptions to rendered components list (between lines 38 and 39)
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar className="nav-bar" bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
       MESA - Medical Education Study Application
     </Navbar.Brand>

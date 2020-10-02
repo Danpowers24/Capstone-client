@@ -26,6 +26,9 @@
       "off",
       "single"
     ],
+    "no-unused-vars": 1,
+    "object-curly-spacing": 1,
+    "key-spacing": 1,
     "skipBlankLines": 0,
     "no-trailing-spaces": 0,
     "ignoreComments": 0,

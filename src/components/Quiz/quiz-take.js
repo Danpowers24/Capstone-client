@@ -3,6 +3,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { quizId } from './quiz-show'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 const QuizTake = (props) => {
   const [ questions, setQuestions ] = useState([])
@@ -118,8 +119,18 @@ const QuizTake = (props) => {
       <ul>
         {answersSubmitted ? <div>You got {answersSubmitted - 1} answers correct</div> : showTheseQuestions}
       </ul>
-      {answersSubmitted ? '' : <Button onClick={handleSubmit} className="btn btn-success mt-2" type="submit">Submit Answers</Button>}
-      
+      {answersSubmitted 
+        ? '' 
+        : <Button 
+            onClick={handleSubmit} 
+            className="btn btn-success mt-2" 
+            type="submit">Submit Answers
+          </Button>
+        }
+        {answersSubmitted 
+          ? <Link to={{pathname:`/quizzes/${quizId}`}}>Go Back</Link>
+          : ''
+        }
     </div>
   )
 }
