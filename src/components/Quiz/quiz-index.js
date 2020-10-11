@@ -7,6 +7,7 @@ import apiUrl from '../../apiConfig'
 
 const Quizzes = (props) => {
   const [quizzes, setQuizzes] = useState([])
+  
   useEffect(() => {
     axios({
       url: apiUrl + '/quizzes',
@@ -18,6 +19,8 @@ const Quizzes = (props) => {
       .then(res => setQuizzes(res.data.quizzes))
       .catch(console.error)
   }, [])
+  
+  console.log('in quiz-index quizzes are', quizzes)
 
   // Define userId as the user who is currently signed in
   const userId = props.user.id

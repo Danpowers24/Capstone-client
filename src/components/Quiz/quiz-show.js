@@ -26,6 +26,7 @@ const Quiz = (props) => {
     })
       .then(res => setQuiz(res.data.quiz))
       .catch(console.error)
+      // deleted would be a dependency, if deleted, tehn rerender the quizzes
   }, [])
 
   const destroy = () => {

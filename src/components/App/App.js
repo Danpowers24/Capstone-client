@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import './App.scss'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
@@ -57,6 +57,9 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          {/* <Route exact path="/" render={() => (
+            user ? (<Redirect to="/sign-in"/>) : <Redirect to="/dashboard" />
+          )}/> */}
           <Route path='/sign-up' render={() => (
             <div>
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />

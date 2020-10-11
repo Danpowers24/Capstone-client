@@ -21,7 +21,7 @@ const QuizTake = (props) => {
   const selectedAnswersArr = []
   const handleChange = event => {
     // I need to figure out how to make the radio button show as selected
-    event.persist()
+    // event.persist()
     selectedAnswersArr.push(event.target.name)
   }
 
