@@ -6,6 +6,11 @@
 
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+}
+
 .quiz-index-list {
     list-style-type: none;
     padding: 0;
@@ -24,4 +29,30 @@
 .quiz-show-buttons {
     display: flex;
     flex-direction: column;
+}
+
+.sign-up-container {
+    display: flex;
+    position: absolute;
+    width: 70%;
+    margin: 0 auto;
+    // background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5));
+}
+
+.sign-up-form-group {
+    background-color: red($color: #000000);
+}
+
+.hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5) ,rgba(255, 255, 255, 0.5)), url("../../assets/MedicalHero.jpeg");
+    // background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5) ,rgba(255, 255, 255, 0.5));
+    height: 600px;
+    width: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
 }

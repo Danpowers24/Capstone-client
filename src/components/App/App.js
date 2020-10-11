@@ -18,6 +18,7 @@ import QuestionIndex from '../Quiz/Question/question-index'
 import QuestionShow from '../Quiz/Question/question-show'
 import QuizTake from '../Quiz/quiz-take'
 import QuestionUpdate from '../Quiz/Question/question-update'
+import Hero from '../Hero'
 
 // old quiz-index route, testing to see if the new syntax works (able to pass down current user id)
 // <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
@@ -57,7 +58,10 @@ class App extends Component {
         ))}
         <main className="container">
           <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            <div>
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+              <Hero />
+            </div>
           )} />
           <Route path='/sign-in' user={user} render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 // import { quizId } from '../quiz-show'
-import { questionId } from './question-show'
+// import { questionId } from './question-show'
 
 import apiUrl from '../../../apiConfig'
 import UpdateQuestionForm from '../../Forms/UpdateQuestionForm'
