@@ -1,12 +1,12 @@
-# Application Title: A Description
+# MESA: Medical Education Study Application
 
-This application allows a user to sign up and sign in. A user can create quizzes and questions for those quizzes. A user can CRUD on their quizzes and questions. This application was inspired by the need for a way for [PACTS](http://csph.brighamandwomens.org/cultural-dexterity-nih-r01-awarded/) researchers to test surgeons on whether or not they were retaining knowledge from the curriculum the researchers were developing.
+This application allows an authenticated user to create quizzes with custom questions. A user can then take the quiz. This application was inspired by the need for a way for [PACTS](http://csph.brighamandwomens.org/cultural-dexterity-nih-r01-awarded/) researchers to test surgeons on whether or not they were retaining knowledge from the curriculum the researchers were developing.
 
 ## Important Links
 
+- [Click here to try it out!](https://danpowers24.github.io/Capstone-client/)
 - [Back-end Repo](https://github.com/Danpowers24/Capstone-api)
 - [Deployed API](https://git.heroku.com/shielded-ridge-23072.git)
-- Check out the client app [here](https://danpowers24.github.io/Capstone-client/)
 
 ## Planning Story
 
@@ -35,6 +35,7 @@ During the home stretch I relied heavily on GA's issue queue, googling issues, a
 - As an authenticated user, I want to edit the questions of one of my quizzes.
 - As an authenticated user, I want to delete a question on one of my quizzes.
 
+- As an authenticated user, I want to take a quiz that I created.
 
 ### Technologies Used
 
@@ -44,16 +45,16 @@ During the home stretch I relied heavily on GA's issue queue, googling issues, a
 - React
 - Axios
 - cURL
+- Heroku
 
 ### Unsolved Problems
 
-- The application currently does not allow the user to take a quiz. I would love to implement that functionality in the next version.
 - I would like to eventually allow administrators to create the quizzes and only let users take quizzes.
 
 ## Images
 
 #### App Screenshot:
-![screenshot](https://i.imgur.com/SBqXUCt.png)
+![screenshot](./src/assets/MESA_Screenshot_v1.1.png)
 
 ---
 
