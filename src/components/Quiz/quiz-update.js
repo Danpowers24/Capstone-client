@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { quizId } from './quiz-show'
@@ -6,15 +6,22 @@ import { quizId } from './quiz-show'
 import apiUrl from '../../apiConfig'
 import UpdateQuizForm from '../Forms/UpdateQuizForm'
 
-const QuizUpdate = (props, match, location, cancelPath) => {
+const QuizUpdate = (props, match) => {
   // console.log('in quiz-update, props are ', props)
+
   const [ quiz, setQuiz ] = useState({
     name: '',
     description: '',
     user_id: props.user.id
   })
-
+console.log('quiz-update quiz is ', quiz)
   const [ createdQuizId, setCreatedQuizId ] = useState(null)
+
+  useEffect(() => {
+    axios(`${apiUrl}/quizzes/${props.quizId}`)
+      .then(res => setQuiz(res.data.quiz))
+      .catch(console.error)
+  }, [])
 
   const handleChange = event => {
     event.persist()

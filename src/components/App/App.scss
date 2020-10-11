@@ -1,0 +1,69 @@
+.quiz-index-container {
+    // background: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    // display: flex;
+}
+
+.quiz-index-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-index-item {
+    font-size: 20px;
+}
+
+.quiz-show-container {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    border: 5px black;
+}
+
+.quiz-show-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-container {
+    display: flex;
+    position: absolute;
+    width: 70%;
+    left: 0;
+    align-items: center;
+    // background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5));
+}
+
+.sign-in-container {
+    display: flex;
+    position: absolute;
+    width: 70%;
+    left: 0;
+    align-items: center;
+    // background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5));
+}
+
+.sign-up-form-group {
+    background-color: red($color: #000000);
+}
+
+.hero {
+    background-image: linear-gradient(to left, rgba(1, 1, 1, 0.1), 70% ,rgba(255, 255, 255, 1)), url("../../assets/MedicalHero.jpeg");
+    // background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(1, 1, 1, 0.5) ,rgba(255, 255, 255, 0.5));
+    height: 700px;
+    width: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: center;
+    z-index: -1;
+}

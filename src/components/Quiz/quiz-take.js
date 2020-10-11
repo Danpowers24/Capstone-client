@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react'
-// import TakeQuizForm from '../Forms/TakeQuizForm'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-// import { questionObj } from './Question/question-index'
 import { quizId } from './quiz-show'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 const QuizTake = (props) => {
-  // console.log('props are', props)
   const [ questions, setQuestions ] = useState([])
-  // need new state variable
-  // call it answer
-  // tie selected queestion to this answer
-  // not sure what to set initial state to
-  const [ answer, setAnswer ] = useState([])
-  // console.log('answer is', answer)
-  // console.log('in quiz-take.js, questions is ', questions)
-  // console.log('in quiz-take.js, questionObj is ', questionObj)
+  const [ answersSubmitted, setAnswersSubmitted ] = useState(false)
 
   useEffect(() => {
     axios(`${apiUrl}/questions/`)
@@ -24,60 +15,38 @@ const QuizTake = (props) => {
       .catch(console.error)
   }, [])
 
-  const selectedAnswer = Object.keys(answer)[0]
-  console.log('selectedAnswer is: ', selectedAnswer)
+  // const selectedAnswer = Object.keys(answer)[0]
+  // console.log('selectedAnswer is: ', selectedAnswer)
 
   // const [ questionAnswerId, setQuestionAnswerId ] = useState(null)
+  // Filter through all questions on database and return an array containing the questions that were created from (are owned by) the quiz currently being viewed
+  const questionsCreatedByThisQuiz = questions.filter(question => question.quiz.id === quizId)
 
+  const selectedAnswersArr = []
   const handleChange = event => {
-    event.persist()
-    // setting the state of answers state variable, not questions
-    setAnswer(answer => ({ [event.target.name]: event.target.value }))
-    // should be updating the answer state
-    // so then I will have two arrays that I can check against each other
-    // anwsers array
-    // questions array
-    // check will be in handleSubmit
+    // I need to figure out how to make the radio button show as selected
+    // event.persist()
+    selectedAnswersArr.push(event.target.name)
   }
 
-  const checkForCorrectAnswer = (selectedAnswer, questionsCreatedByThisQuiz) => {
-    if (selectedAnswer === questionsCreatedByThisQuiz) {
-      console.log('correct answer!')
-    } else {
-      console.log('some sort of match not found')
-    }
-  }
+  // Start the score at 1 to enable ternary logic in the main return below (between the <ul> tags)
+  // If we set the score to start at 0 (as one would assume) then the 'submit answers' button would never render, as 0 is falsy
+  let score = 1
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log('handlesubmit has been called, this is the event', event)
-    // console.log('answer is: ', answer)
-    // set the following to answer 1/2/3/4
-      .then((selectedAnswer, questionsCreatedByThisQuiz) => {
-        const firstQuestionCreatedByThisQuiz = questionsCreatedByThisQuiz[0]
-        console.log('firstQuestionCreatedByThisQuiz.answerkey is ', firstQuestionCreatedByThisQuiz.answerkey)
-        if (selectedAnswer === firstQuestionCreatedByThisQuiz.answerkey) {
-          console.log('correct answer!')
-        } else {
-          console.log('some sort of match not found')
-        }
-      })
-      .then(checkForCorrectAnswer())
-      .catch(console.error)
-      // run a check if correct answer function
+    for (let i = 0; i < questionsCreatedByThisQuiz.length; i++) {
+      console.log('question number ', questionsCreatedByThisQuiz[i].answerkey, 'corresponding selected answer is', selectedAnswersArr[i])
+      if (questionsCreatedByThisQuiz[i].answerkey === selectedAnswersArr[i]) {
+        console.log('right answer!')
+        score++
+        console.log('score is', score)
+      }
+    }
+    setAnswersSubmitted(score)
   }
 
-  // console.log('handleSubmit is: ', handleSubmit)
-
-  // Filter through all questions on database and return an array containing
-  // the questions that were created from (are owned by) the quiz being currently viewed
-  const questionsCreatedByThisQuiz = questions.filter(question => question.quiz.id === quizId)
-
-  console.log('questionsCreatedByThisQuiz is', questionsCreatedByThisQuiz)
-
-  const firstQuestionCreatedByThisQuiz = questionsCreatedByThisQuiz[0]
-
-  console.log('firstQuestionCreatedByThisQuiz is: ', firstQuestionCreatedByThisQuiz)
+  // console.log('questionsCreatedByThisQuiz is', questionsCreatedByThisQuiz)
 
   const styles = {
     display: 'block'
@@ -139,54 +108,33 @@ const QuizTake = (props) => {
         </label>
       </div>
       <div style={styles}>
-        <label>
-          <input
-            type="radio"
-            name="submit button"
-            value='Submit button'
-            checked={false}
-            className="form-check-input"
-            onChange={handleSubmit}
-          />
-          Submit Answer
-        </label>
       </div>
-      <Button onSubmit={handleSubmit} className="btn btn-success mt-2" type="submit">
-          Submit Answer
-      </Button>
     </li>
   })
 
-  // // check if it's the right answer
-  // if (questionAnswerId && questionAnswerId === answerkey) {
-  //   // give user feedback
-  //   console.log('correct answer!')
-  // } else if (questionAnswerId && questionAnswerId !== answerkey) {
-  //   // give user feedback
-  //   console.log('incorrect answer')
-  // }
-
-  // OK so I am trying to do something similar to waht Brandon and Nick were trying to figure out
-  // early yesterday. about looping through an array of objects and displaying the
-  // first key of each of the objects.
-  // except I want to render all keys of an object on one page, then on the next page,
-  // render all the keys of an object, kind of
-  // I want to be able to extrat them and inject them into the form so the user can
-  // fill out one question per view
-
-  // <TakeQuizForm
-  //   handleSubmit={handleSubmit}
-  //   handleChange={handleChange}
-  //   questions={questions}
-  //   questionAnswerId={questionAnswerId}
-  // />
+  // this only works if the user takes the quiz in order
+  // next is to only show the user the current question
+  // its gotta be something to do with answerkey.length
+  // if questionsCreatedByThisQuiz[i] === answerkey.length
 
   return (
     <div>
       <h4>Questions</h4>
       <ul>
-        {showTheseQuestions}
+        {answersSubmitted ? <div>You got {answersSubmitted - 1} answers correct</div> : showTheseQuestions}
       </ul>
+      {answersSubmitted 
+        ? '' 
+        : <Button 
+            onClick={handleSubmit} 
+            className="btn btn-success mt-2" 
+            type="submit">Submit Answers
+          </Button>
+        }
+        {answersSubmitted 
+          ? <Link to={{ pathname: `/quizzes/${quizId}` }}>Go Back</Link>
+          : ''
+        }
     </div>
   )
 }

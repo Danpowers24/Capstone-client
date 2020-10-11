@@ -12,7 +12,7 @@ const QuestionCreate = (props, match, location, cancelPath) => {
     answer2: '',
     answer3: '',
     answer4: '',
-    answerkey: '',
+    answerkey: 'answer1',
     user_id: props.user.id,
     quiz_id: props.quizId
   })
@@ -22,6 +22,13 @@ const QuestionCreate = (props, match, location, cancelPath) => {
   const handleChange = event => {
     event.persist()
     setQuestion(quiz => ({ ...quiz, [event.target.name]: event.target.value }))
+  }
+
+  const handleSelectAnswerKey = event => {
+    event.persist()
+    setQuestion(quiz => ({ ...quiz, answerkey: event.target.value }))
+    console.log('event.target.value', event.target.value)
+    console.log('question.answerkey', question.answerkey)
   }
 
   const handleSubmit = event => {
@@ -52,6 +59,7 @@ const QuestionCreate = (props, match, location, cancelPath) => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         cancelPath={`/quizzes/${props.quizId}`}
+        handleSelectAnswerKey={handleSelectAnswerKey}
       />
     </div>
   )

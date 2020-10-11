@@ -9,7 +9,7 @@ const divStyle = {
 
 // wait, create the questions resource adn figure that out and then come back and make this form
 
-const UpdateQuestionForm = ({ question, handleChange, handleSubmit, cancelPath }) => (
+const UpdateQuestionForm = ({ question, handleChange, handleSubmit, handleSelectAnswerKey, cancelPath }) => (
   <div>
     <h3 style={divStyle}>Update this Question!</h3>
     <Form onSubmit={handleSubmit}>
@@ -50,13 +50,16 @@ const UpdateQuestionForm = ({ question, handleChange, handleSubmit, cancelPath }
         onChange={handleChange}
       />
 
-      <Form.Label>Correct Answer</Form.Label>
-      <Form.Control
-        placeholder="Drop down... answer1/2/3/4"
-        value={question.answerkey}
-        name="answerkey"
-        onChange={handleChange}
-      />
+      <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Label>Correct Answer</Form.Label>
+        <Form.Control onChange={handleSelectAnswerKey} as="select">
+          <option>No Correct Answer Selected</option>
+          <option>answer1</option>
+          <option>answer2</option>
+          <option>answer3</option>
+          <option>answer4</option>
+        </Form.Control>
+      </Form.Group>
 
       <Button type="submit">Submit</Button>
       <Link to={cancelPath}>

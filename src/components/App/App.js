@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
+import './App.scss'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -17,6 +18,7 @@ import QuestionIndex from '../Quiz/Question/question-index'
 import QuestionShow from '../Quiz/Question/question-show'
 import QuizTake from '../Quiz/quiz-take'
 import QuestionUpdate from '../Quiz/Question/question-update'
+import Hero from '../Hero'
 
 // old quiz-index route, testing to see if the new syntax works (able to pass down current user id)
 // <AuthenticatedRoute user={user} exact path='/quiz-index' component={Quizzes} />
@@ -55,11 +57,20 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          {/* <Route exact path="/" render={() => (
+            user ? (<Redirect to="/sign-in"/>) : <Redirect to="/dashboard" />
+          )}/> */}
           <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            <div>
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+              <Hero />
+            </div>
           )} />
           <Route path='/sign-in' user={user} render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            <div>
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+              <Hero />
+            </div>
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
@@ -79,8 +90,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/question-create/:id' render={({ match, props }) => (
             <QuestionCreate user={user} match={match} props={props} quizId={match.params.id}/>
           )} />
-          <AuthenticatedRoute user={user} exact path='/quizzes/:id/edit' render={() => (
-            <QuizUpdate user={user} />
+          <AuthenticatedRoute user={user} exact path='/quizzes/:id/edit' render={({ match }) => (
+            <QuizUpdate user={user} match={match} quizId={match.params.id}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/question-index/:id' render={({ match }) => (
             <QuestionIndex user={user} match={match} />
@@ -89,7 +100,7 @@ class App extends Component {
             <QuestionShow user={user} match={match} />
           )} />
           <AuthenticatedRoute user={user} exact path='/questions/:id/edit' render={({ match }) => (
-            <QuestionUpdate user={user} match={match} />
+            <QuestionUpdate user={user} match={match} questionId={match.params.id} />
           )} />
           <AuthenticatedRoute user={user} exact path='/quiz-take/:id' render={({ match, props }) => (
             <QuizTake user={user} match={match} props={props} quizId={match.params.id}/>

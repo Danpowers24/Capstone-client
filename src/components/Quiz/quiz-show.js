@@ -10,13 +10,15 @@ import apiUrl from '../../apiConfig'
 let quizId = ''
 
 const Quiz = (props) => {
-  // console.log('these are the props', props)
+  // console.log('quiz-show props', props)
   const [ quiz, setQuiz ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
 
+  const quizID = props.match.params.id
+
   useEffect(() => {
     axios({
-      url: apiUrl + '/quizzes/' + props.match.params.id,
+      url: apiUrl + '/quizzes/' + quizID,
       method: 'GET',
       headers: {
         'Authorization': `Token token=${props.user.token}`
@@ -24,6 +26,7 @@ const Quiz = (props) => {
     })
       .then(res => setQuiz(res.data.quiz))
       .catch(console.error)
+      // deleted would be a dependency, if deleted, tehn rerender the quizzes
   }, [])
 
   const destroy = () => {
@@ -59,23 +62,25 @@ const Quiz = (props) => {
   // console.log('quizId is ', quizId)
 
   return (
-    <div>
-      <h4>Quiz Name: {quiz.name}</h4>
+    <div className='quiz-show-container'>
+      <h4>{quiz.name}</h4>
       <p>Description: {quiz.description}</p>
-      <Link to={`/quiz-take/${props.match.params.id}`} props={props} quizid={quizId}>
-        <Button className='btn-primary'>Take This Quiz</Button>
-      </Link>
-      <Button className='btn-danger' onClick={destroy}>Delete This Quiz</Button>
-      <Link to={`/quizzes/${props.match.params.id}/edit`}>
-        <button>Edit Quiz</button>
-      </Link>
-      <Link to={`/question-create/${props.match.params.id}`}>
-        <button>Create Question</button>
-      </Link>
-      <Link to={`/question-index/${props.match.params.id}`} quizid={quizId}>
-        <button>See All Questions</button>
-      </Link>
-      <Link to="/quiz-index">Back to All quizzes</Link>
+        <div className='quiz-show-buttons'>
+          <Link to={`/quiz-take/${quizID}`} props={props} quizid={quizId}>
+            <Button className='btn-success'>Take This Quiz</Button>
+          </Link>
+          <Link to={{ pathname: `/quizzes/${quizID}/edit`, props: { quizName: quiz.name, quizDescription: quiz.description } }} >
+            <Button>Edit Quiz</Button>
+          </Link>
+          <Link to={`/question-create/${quizID}`}>
+            <Button>Create Question</Button>
+          </Link>
+          <Link to={`/question-index/${quizID}`} quizid={quizId}>
+            <Button>See All Questions</Button>
+          </Link>
+          <Button className='btn-danger' onClick={destroy}>Delete This Quiz</Button>
+          <Link to="/quiz-index">Back to all quizzes</Link>
+        </div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ const QuestionShow = (props) => {
   const [ question, setQuestion ] = useState(null)
   const [ deleted, setDeleted ] = useState(false)
 
-  // console.log('in question-show.js, question is: ', question)
+  console.log('in question-show.js, question is: ', question)
 
   useEffect(() => {
     axios({
